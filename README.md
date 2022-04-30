@@ -1,6 +1,22 @@
-# Serverless - Comandos
+# Template de AWS
+ serverless create --template aws-nodejs-typescript
 
-> **Requirements**: Para que pueda correr localmente este previamente ejecutado el comando < npm i > que instalará todas las dependencias, con el comando < npm start >. En caso de requerir ejecutar la lambda unicamente se utilizará el siguiente comando < sls invoke local - f hello >
+# Serverless - Comandos
+ Para que pueda correr localmente este previamente ejecutado el comando < npm i > que instalará todas las dependencias, con el comando < npm start >. En caso de requerir ejecutar la lambda unicamente se utilizará el siguiente comando < sls invoke local - f hello 
+
+# Install AWS CLI
+Instalar el AWS CLI para que se pueda sincronizar el poyecto con AWS, se puede usar el siguiente comando 
+### Command AWS CLI
+- msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi > 
+
+# Desactivar el permiso 
+export NODE_TLS_REJECT_UNAUTHORIZED=0
+
+# Serveless
+Comando para realizar el deploy del proyecto a AWS
+### Command
+- sls deploy
+
 
 # Serverless - AWS Node.js Typescript
 
