@@ -1,9 +1,9 @@
+import "reflect-metadata"
 import type { AWS } from '@serverless/typescript';
-
-import { hello } from 'src/app';
+import { user, hello } from 'src/app';
 
 const serverlessConfiguration: AWS = {
-  service: 'myfirstpokemonbackend',
+  service: 'proyecto-serverless2',
   frameworkVersion: '3',
   plugins: [
     'serverless-esbuild',
@@ -22,7 +22,10 @@ const serverlessConfiguration: AWS = {
     },
   },
   // import the function via paths
-  functions: { hello },
+  functions: {
+    hello,
+    user
+  },
   package: { individually: true },
   custom: {
     esbuild: {

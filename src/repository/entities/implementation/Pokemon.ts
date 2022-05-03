@@ -9,6 +9,7 @@ import Type from "./Type";
 
 @Entity({ schema: "public" })
 export default class Pokemon extends BaseEntity implements IPokemon  {
+
   @Column("varchar", { length: 50 })
   name: string;
 

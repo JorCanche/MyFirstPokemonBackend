@@ -1,13 +1,13 @@
+import "reflect-metadata";
 import { handlerPath } from '@libs/handler-resolver';
-import "reflect-metadata"
 
 export default {
-  handler: `${handlerPath(__dirname)}/handler.main`,
+  handler: `${handlerPath(__dirname)}/getUsersHandler.getUsers`,
   events: [
     {
       http: {
         method: 'get',
-        path: 'hello',
+        path: 'user',
       },
     },
   ],
