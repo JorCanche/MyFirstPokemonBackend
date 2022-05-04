@@ -1,34 +1,31 @@
-import "reflect-metadata";
-import IUser from "../../../repository/entities/interface/IUser";
-import { IPokemon, IUserRepository } from "../../../repository";
-import IPokemonAdapter from "../interface/IPokemonAdapter";
-import IPokemonDTO from "src/adapter/DTO/IPokemonDTO";
-import { IMapperService } from "../../../shared";
 import { inject, injectable } from "inversify";
-import TYPES from "../../../types";
+import "reflect-metadata";
+import IPokemonDTO from "src/adapter/DTO/IPokemonDTO";
+import IUserDTO from "src/adapter/DTO/IUserDTO";
+import { IPokemon, IUser, IUserRepository } from "src/repository";
+import IPokemonRepository from "src/repository/Pokemon/interface/IPokemonRepository";
+import { IMapperService } from "src/shared";
+import TYPES from "src/types";
+import IPokemonAdapter from "../interface/IPokemonAdapter";
 
 @injectable()
-export default class PokemonAdapter  {
-//   private iUserRepository: IUserRepository;
-//   private iUserMapperService: IMapperService<IUser, IPokemonDTO>;
+export default class PokemonAdapter implements IPokemonAdapter {
+private iPokemonRepository: IPokemonRepository;
+private iPokemonMapperService: IMapperService<IPokemon, IPokemonDTO>;
 
-//   constructor(
-//     @inject(TYPES.UserRepository) iUserRepository: IUserRepository,
-//     @inject(TYPES.UserMapperService) iUserMapperService: IMapperService<IUser, IPokemonDTO>,
-//   ) {
-//     this.iUserRepository = iUserRepository;
-//     this.iUserMapperService = iUserMapperService;
-//   }
+    find(): Promise<IPokemonDTO[]> {
+        throw new Error("Method not implemented.");
+    }
+    findById(id: string): Promise<IPokemonDTO> {
+        throw new Error("Method not implemented.");
+    }
 
-//   async find(): Promise<IPokemonDTO []> {
-//     const pokemones: IPokemon [] = await this.iUserRepository.find();
-//     const pokemonesDTO: IPokemonDTO [] = this.iUserMapperService.transform(pokemones);
-//     return pokemonesDTO;
-//   }
+    constructor(
+        @inject(TYPES.UserRepository) iPokemonRepository: IPokemonRepository,
+        @inject(TYPES.PokemonMapperService) iPokemonMapperService: IMapperService<IPokemon, IPokemonDTO>,
+      ) {
+        this.iPokemonRepository = iPokemonRepository;
+        this.iPokemonMapperService = iPokemonMapperService;
+      }
 
-//   async findById(name: string): Promise<IPokemonDTO> {
-//     const pokemon: IPokemon = await this.iUserRepository.findById(name);
-//     const pokemonDTO: IPokemonDTO = this.iUserMapperService.transform(pokemon);
-//     return pokemonDTO;
-//   }
 }

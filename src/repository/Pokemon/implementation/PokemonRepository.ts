@@ -4,7 +4,6 @@ import Pokemon from "src/repository/entities/implementation/Pokemon";
 import { IDBConnectionManager } from "src/shared";
 import IPokemonRepository from "../interface/IPokemonRepository";
 import TYPES from "src/types"
-import IPokemon from "src/repository/entities/interface/IPokemon";
 import { SelectQueryBuilder } from "typeorm";
 
 @injectable()

@@ -9,6 +9,12 @@ const TYPES = {
   UserAdapter: Symbol.for('UserAdapter'),
   UserMapperService: Symbol.for('UserMapperService'),
   //#endregion
+
+    //#region Pokemon
+    PokemonRepository: Symbol.for('PokemonRepository'),
+    PokemonAdapter: Symbol.for('PokemonAdapter'),
+    PokemonMapperService: Symbol.for('PokemonMapperService'),
+    //#endregion
 }
 
 export default TYPES;

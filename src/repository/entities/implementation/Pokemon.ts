@@ -12,6 +12,9 @@ export default class Pokemon extends BaseEntity implements IPokemon  {
 
   @Column("varchar", { length: 50 })
   name: string;
+  
+  @Column("int")
+  edad: number;
 
   @Column("varchar", { length: 250 })
   image: string;
