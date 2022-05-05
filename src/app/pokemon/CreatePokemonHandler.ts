@@ -6,14 +6,14 @@ import "reflect-metadata"
 import { IPokemon, IPokemonRepository } from "src/repository";
 
 
-const CreatePokemonHandler = async (event) => {
+const createPokemonHandler = async (event) => {
     const iPokemonRepository: IPokemonRepository = container.get<IPokemonRepository>(TYPES.PokemonRepository);
-    const Pokemon: IPokemon = await iPokemonRepository.create(event.body);
+    const pokemon: IPokemon = await iPokemonRepository.create(event.body);
     return formatJSONResponse({
-      Pokemon
+      pokemon
     });
   };
 
 
 
-export const CreatePokemon = middyfy(CreatePokemonHandler);
+export const createPokemon = middyfy(createPokemonHandler);
