@@ -2,11 +2,11 @@ import "reflect-metadata";
 import { handlerPath } from '@libs/handler-resolver';
 
 export default {
-  handler: `${handlerPath(__dirname)}/getUsersHandler.getUsers`,
+  handler: `${handlerPath(__dirname)}/CreatePokemonHandler.CreatePokemon`,
   events: [
     {
       http: {
-        method: 'get',
+        method: 'post',
         path: 'pokemon',
       },
     },

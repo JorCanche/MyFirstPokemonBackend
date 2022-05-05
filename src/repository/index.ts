@@ -12,6 +12,8 @@ import IPokemon from "./entities/interface/IPokemon"
 import ITrainer from "./entities/interface/ITrainer"
 import IPokemonByTrainer from "./entities/interface/IPokemonByTrainer"
 import PokemonByTrainer from "./entities/implementation/PokemonByTrainer"
+import IPokemonRepository from "./Pokemon/interface/IPokemonRepository"
+import PokemonRepository from "./Pokemon/implementation/PokemonRepository"
 
 export {
   UserRepository,
@@ -27,5 +29,7 @@ export {
   IType,
   Type,
   IPokemonByTrainer,
-  PokemonByTrainer
+  PokemonByTrainer,
+  PokemonRepository,
+  IPokemonRepository
 }

@@ -15,11 +15,11 @@ import { DBConnectionManager, IDBConnectionManager } from "./shared";
 import { UserAdapter, IUserAdapter, UserMapperService } from "./adapter";
 import { UserUseCase, IUserUseCase } from "./usecase";
 import { UserRepository, IUserRepository } from "./repository";
-import PokemonAdapter from "./adapter/pokemon/implementation/PokemonAdapter";
-import IPokemonRepository from "./repository/Pokemon/interface/IPokemonRepository";
-import IPokemonAdapter from "./adapter/pokemon/interface/IPokemonAdapter";
-import PokemonRepository from "./repository/Pokemon/implementation/PokemonRepository";
-import IPokemonMapperService from "./adapter/pokemon/interface/IPokemonMapperService";
+
+import { PokemonAdapter, IPokemonAdapter, PokemonMapperService } from "./adapter";
+import { PokemonRepository, IPokemonRepository } from "./repository";
+
+
 //#endregion
 
 const container: Container = new Container();
@@ -38,8 +38,9 @@ container.bind<UserMapperService>(TYPES.UserMapperService).to(UserMapperService)
 //#region Pokemon bindings
 container.bind<IPokemonAdapter>(TYPES.PokemonAdapter).to(PokemonAdapter);
 container.bind<IPokemonRepository>(TYPES.PokemonRepository).to(PokemonRepository);
-container.bind<IPokemonMapperService>(TYPES.PokemonMapperService).to(IPokemonMapperService);
+container.bind<PokemonMapperService>(TYPES.PokemonMapperService).to(PokemonMapperService);
 //#endregion
 
 export default container;
+
 

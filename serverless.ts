@@ -1,6 +1,6 @@
 import "reflect-metadata"
 import type { AWS } from '@serverless/typescript';
-import { user, hello } from 'src/app';
+import { user, hello, pokemon} from 'src/app';
 
 const serverlessConfiguration: AWS = {
   service: 'proyecto-serverless2',
@@ -24,7 +24,8 @@ const serverlessConfiguration: AWS = {
   // import the function via paths
   functions: {
     hello,
-    user
+    user,
+    pokemon
   },
   package: { individually: true },
   custom: {
