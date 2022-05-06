@@ -77,8 +77,21 @@ export default class UserRepository implements IUserRepository {
   }
 
   async update(user: User): Promise<User> {
-    throw new Error("Not implemented yet.")
-    // return true;
+    await this.iDBConnectionManager.connect();
+
+    try {
+      const updateUser: User = await this.iDBConnectionManager.connection
+      .getRepository(User).update(User));
+      // tslint:disable-next-line:no-console
+      console.log("UserRepository.update", updateUser)
+      return updateUser;
+    } catch (error) {
+      throw error;
+    } finally {
+      // tslint:disable-next-line:no-console
+      console.log("disconnected");
+      await this.iDBConnectionManager.disconnect();
+    }
   }
 
   async delete(id: string): Promise<void> {

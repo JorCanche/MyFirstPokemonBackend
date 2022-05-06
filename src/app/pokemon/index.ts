@@ -1,8 +1,8 @@
 import "reflect-metadata";
 import { handlerPath } from '@libs/handler-resolver';
 
-export default {
-  handler: `${handlerPath(__dirname)}/createPokemonHandler.createPokemon`,
+export const createPokemon = {
+  handler: `${handlerPath(__dirname)}/pokemonHandler.createPokemon`,
   events: [
     {
       http: {
@@ -12,3 +12,16 @@ export default {
     },
   ],
 };
+
+export const getPokemon = {
+  handler: `${handlerPath(__dirname)}/pokemonHandler.getPokemon`,
+  events: [
+    {
+      http: {
+        method: 'get',
+        path: 'pokemon',
+      },
+    },
+  ],
+};
+
