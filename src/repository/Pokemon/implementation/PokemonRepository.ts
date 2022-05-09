@@ -4,7 +4,7 @@ import Pokemon from "src/repository/entities/implementation/Pokemon";
 import { IDBConnectionManager } from "src/shared";
 import IPokemonRepository from "../interface/IPokemonRepository";
 import TYPES from "src/types"
-import { SelectQueryBuilder } from "typeorm";
+import { Repository, SelectQueryBuilder } from "typeorm";
 
 @injectable()
 export default class PokemonRepository implements IPokemonRepository {
@@ -63,8 +63,29 @@ constructor(
       await this.iDBConnectionManager.disconnect();
     }
   }
-  update(t: Partial<Pokemon>): Promise<Pokemon> {
-    throw new Error("Method not implemented.");
+  async update(pokemon: Partial<Pokemon>): Promise<Pokemon> {
+    await this.iDBConnectionManager.connect();
+
+    try {
+      //Repositorio del Pokemon
+      const repositoryPokemon: Repository<Pokemon> = this.iDBConnectionManager.connection
+      .getRepository(Pokemon)
+      //Buscamos primero el pokemon 
+      const pokemonSaved: Pokemon = await repositoryPokemon.findOneBy(pokemon)
+      //Actualizamos el pokemon
+      const createdPokemon: Pokemon = await repositoryPokemon.save(pokemonSaved);
+      // tslint:disable-next-line:no-console
+      console.log("UserPokemon.create", createdPokemon)
+      // Retornamos el pokemon actualizado
+      return createdPokemon;
+
+    } catch (error) {
+      throw error;
+    } finally {
+      // tslint:disable-next-line:no-console
+      console.log("disconnected");
+      await this.iDBConnectionManager.disconnect();
+    }
   }
   delete(id: string): Promise<void> {
     throw new Error("Method not implemented.");

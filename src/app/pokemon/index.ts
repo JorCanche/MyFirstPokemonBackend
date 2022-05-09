@@ -25,3 +25,15 @@ export const getPokemon = {
   ],
 };
 
+export const updatePokemon = {
+  handler: `${handlerPath(__dirname)}/pokemonHandler.updatePokemon`,
+  events: [
+    {
+      http: {
+        method: 'put',
+        path: 'pokemon'
+       }
+    },
+  ],
+};
+

@@ -26,3 +26,13 @@ const createPokemonHandler = async (event) => {
 };
 
 export const createPokemon = middyfy(createPokemonHandler);
+
+export const updatePokemonHandler = async (event) =>{
+  const iPokemonRepository: IPokemonRepository = container.get<IPokemonRepository>(TYPES.PokemonRepository);
+  const pokemon: IPokemon = await iPokemonRepository.update(event.body)
+  return formatJSONResponse({
+    pokemon
+  })
+}
+
+export const updatePokemon = middyfy(updatePokemonHandler)
